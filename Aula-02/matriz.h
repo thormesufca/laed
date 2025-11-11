@@ -13,10 +13,15 @@ Matriz* cria(int, int);
 */
 void libera(Matriz*);
 
-/* Função preenche
+/* Função Preenche Total
 ** Preenche a matriz inteira com o mesmo valor
 */
-void preenche(Matriz*, float);
+void preenche_total(Matriz*, float);
+
+/* Função preenche
+** Pergunta ao usuário para cada posição da matriz que valor deve ser colocado
+*/
+void preenche(Matriz*);
 
 /* Função print
 ** Imprime todos os itens da matriz no console
