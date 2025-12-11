@@ -23,7 +23,7 @@ int cheia(Lista *);
 
 int vazia(Lista *);
 
-int inserirFim(Lista *ls, struct aluno);
+int inserirFim(Lista *, struct aluno);
 
 int inserirInicio(Lista *ls, struct aluno);
 

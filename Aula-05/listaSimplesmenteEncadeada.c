@@ -19,7 +19,7 @@ Lista* criar(){
     return ldse;
 }
 
-void inserirInicio(Lista *ldse, Aluno novosdados){
+int inserirInicio(Lista *ldse, Aluno novosdados){
     if( ldse == NULL){
         return 0;
     }
@@ -27,13 +27,13 @@ void inserirInicio(Lista *ldse, Aluno novosdados){
         Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
         if(novo == NULL) return 0;
         novo->dados = novosdados;
-        novo->prox = *ldse;
+        novo->proximo = *ldse;
         *ldse = novo;
         return 1;
     }
 }
 
-void inserirFim(Lista *ldse, Aluno novosdados){
+int inserirFim(Lista *ldse, Aluno novosdados){
     if(ldse == NULL){
         return 0;
     }
@@ -112,7 +112,7 @@ void destruir(Lista *ldse){
         Elemento *aux;
         while (*ldse != NULL){
             aux = *ldse;
-            *ldse = (*ldse)-> prox;
+            *ldse = (*ldse)-> proximo;
             free(aux);
         }
     }
@@ -142,7 +142,7 @@ int removerFim(Lista *ldse){
     } else{
         Elemento *ant = *ldse;
         Elemento *aux = ant->proximo;
-        while(aux-prox != NULL){
+        while(aux->proximo != NULL){
             ant = aux;
             aux = aux->proximo;
         }
@@ -158,9 +158,9 @@ int removerValor(Lista *ldse, int matricula){
     }
     else if((*ldse)->dados.matricula == matricula){
         Elemento *aux = *ldse;
-        *ldse aux->proximo;
+        *ldse = aux->proximo;
         free(aux);
-        return 1
+        return 1;
     } else{
             Elemento *prox = (*ldse)->proximo;
             Elemento *atual = *ldse;
