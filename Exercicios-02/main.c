@@ -99,7 +99,7 @@ int lerFloat(float *valor){
 }
 
 int main(){
-    Lista *ls;
+    Lista *ls = NULL;
     int funcao = 99;
     while(funcao != 0){
         printf("O que quer fazer?\n");
@@ -109,11 +109,15 @@ int main(){
         printf("4 - Calcular distancia entre pontos\n");
         printf("5 - Eliminar pontos com base em distancia\n");
         printf("0 - Sair do programa\n");
-        scanf("%d", &funcao);
+        if(!lerInteiro(&funcao)){
+            printf("Entrada invalida. Tente novamente\n");
+            funcao = 99;
+            continue;
+        }
         switch(funcao){
             case 0:
+                if(ls != NULL) destruir(ls);
                 return 0;
-                break;
             case 1:
                 ls = criarLista();
                 break;
@@ -129,6 +133,8 @@ int main(){
             case 5:
                 eliminarDistancia(ls);
                 break;
+            default:
+                printf("Opcao invalida!\n");
         }
     }
 }
