@@ -3,6 +3,28 @@
 #include "pilha.h"
 #include "colors.h"
 
+struct movimento{
+    int linha;
+    int coluna;
+    struct movimento *proximo;
+};
+
+const int directions[4][2] = {
+    [0] = {-1, 0}, // CIMA
+    [1] = {0, 1}, // DIREITA
+    [2] = {1, 0}, // BAIXO
+    [3] = {0, -1}  // ESQUERDA
+};
+struct jogador {
+    char nome[20];
+    int posicao; //1 para Branco, 2 para Preto
+    Pilha *bolsa;
+    Pilha *mao;
+};
+
+
+
+
 void print_tabuleiro(Tabuleiro *matriz)
 {
     if (matriz == NULL)

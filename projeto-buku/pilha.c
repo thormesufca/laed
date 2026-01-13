@@ -15,30 +15,30 @@ struct pilha
 Pilha *criar()
 {
     Pilha *pd;
-    pe = (Pilha *)malloc(sizeof(Pilha));
-    if (pe != NULL)
+    pd = (Pilha *)malloc(sizeof(Pilha));
+    if (pd != NULL)
     {
-        pe->topo = NULL;
-        pe->tamanho = 0;
+        pd->topo = NULL;
+        pd->tamanho = 0;
     }
-    return pe;
+    return pd;
 }
 
 int vazia(Pilha *pd)
 {
-    if (pe == NULL)
+    if (pd == NULL)
     {
         return 1;
     }
     else
     {
-        return pe->tamanho == 0;
+        return pd->tamanho == 0;
     }
 }
 
 int inserir(Pilha *pd)
 {
-    if (pe == NULL)
+    if (pd == NULL)
     {
         return 0;
     }
@@ -47,24 +47,24 @@ int inserir(Pilha *pd)
         Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
         if (novo == NULL)
             return 0;
-        novo->proximo = pe->topo;
-        pe->topo = novo;
-        pe->tamanho++;
+        novo->proximo = pd->topo;
+        pd->topo = novo;
+        pd->tamanho++;
         return 1;
     }
 }
 
 int remover(Pilha *pd)
 {
-    if (vazia(pe))
+    if (vazia(pd))
     {
         return 0;
     }
     else
     {
-        Elemento *aux = pe->topo;
-        pe->topo = aux->proximo;
-        pe->tamanho--;
+        Elemento *aux = pd->topo;
+        pd->topo = aux->proximo;
+        pd->tamanho--;
         free(aux);
         return 1;
     }
@@ -72,30 +72,30 @@ int remover(Pilha *pd)
 
 void destruir(Pilha *pd)
 {
-    if (pe != NULL)
+    if (pd != NULL)
     {
-        if (!vazia(pe))
+        if (!vazia(pd))
         {
             Elemento *aux;
-            while (pe->topo != NULL)
+            while (pd->topo != NULL)
             {
-                aux = pe->topo;
-                pe->topo = aux->proximo;
+                aux = pd->topo;
+                pd->topo = aux->proximo;
                 free(aux);
             }
         }
-        free(pe);
+        free(pd);
     }
 }
 
 int tamanho(Pilha *pd)
 {
-    if (pe == NULL)
+    if (pd == NULL)
     {
         return -1;
     }
     else
     {
-        return pe->tamanho;
+        return pd->tamanho;
     }
 }
